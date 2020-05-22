@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Woo Shaun</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Orbitron">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Press Start 2P">
     <style>
         .typewriter {
             font-family: monospace;
@@ -32,15 +34,262 @@
             border-color: pink;
             }
         }
+
+        .clock{
+            color: white;
+            font-size: 60px;
+            font-family: 'Orbitron';
+            letter-spacing: 7px;
+            margin-bottom: 100px;
+        }
         
+        /* glitch */
+        p {
+            text-align: center;
+            color: #fff;
+            /* font-size: 5em; */
+            letter-spacing: 8px;
+            font-family: 'Orbitron';
+            font-weight: 400;
+            /*Create overlap*/
+            
+            margin: 0;
+            line-height: 0;
+            /*Animation*/
+            
+            animation: glitch1 2.5s infinite;
+        }
+
+        p:nth-child(2) {
+            color: #67f3da;
+            animation: glitch2 2.5s infinite;
+        }
+
+        p:nth-child(3) {
+            color: #f16f6f;
+            animation: glitch3 2.5s infinite;
+        }
+
+        /*Keyframes*/
+
+        @keyframes glitch1 {
+            0% {
+                transform: none;
+                opacity: 1;
+            }
+            7% {
+                transform: skew(-0.5deg, -0.9deg);
+                opacity: 0.75;
+            }
+            10% {
+                transform: none;
+                opacity: 1;
+            }
+            27% {
+                transform: none;
+                opacity: 1;
+            }
+            30% {
+                transform: skew(0.8deg, -0.1deg);
+                opacity: 0.75;
+            }
+            35% {
+                transform: none;
+                opacity: 1;
+            }
+            52% {
+                transform: none;
+                opacity: 1;
+            }
+            55% {
+                transform: skew(-1deg, 0.2deg);
+                opacity: 0.75;
+            }
+            50% {
+                transform: none;
+                opacity: 1;
+            }
+            72% {
+                transform: none;
+                opacity: 1;
+            }
+            75% {
+                transform: skew(0.4deg, 1deg);
+                opacity: 0.75;
+            }
+            80% {
+                transform: none;
+                opacity: 1;
+            }
+            100% {
+                transform: none;
+                opacity: 1;
+            }
+        }
+
+        @keyframes glitch2 {
+            0% {
+                transform: none;
+                opacity: 0.25;
+            }
+            7% {
+                transform: translate(-2px, -3px);
+                opacity: 0.5;
+            }
+            10% {
+                transform: none;
+                opacity: 0.25;
+            }
+            27% {
+                transform: none;
+                opacity: 0.25;
+            }
+            30% {
+                transform: translate(-5px, -2px);
+                opacity: 0.5;
+            }
+            35% {
+                transform: none;
+                opacity: 0.25;
+            }
+            52% {
+                transform: none;
+                opacity: 0.25;
+            }
+            55% {
+                transform: translate(-5px, -1px);
+                opacity: 0.5;
+            }
+            50% {
+                transform: none;
+                opacity: 0.25;
+            }
+            72% {
+                transform: none;
+                opacity: 0.25;
+            }
+            75% {
+                transform: translate(-2px, -6px);
+                opacity: 0.5;
+            }
+            80% {
+                transform: none;
+                opacity: 0.25;
+            }
+            100% {
+                transform: none;
+                opacity: 0.25;
+            }
+        }
+
+        @keyframes glitch3 {
+            0% {
+                transform: none;
+                opacity: 0.25;
+            }
+            7% {
+                transform: translate(2px, 3px);
+                opacity: 0.5;
+            }
+            10% {
+                transform: none;
+                opacity: 0.25;
+            }
+            27% {
+                transform: none;
+                opacity: 0.25;
+            }
+            30% {
+                transform: translate(5px, 2px);
+                opacity: 0.5;
+            }
+            35% {
+                transform: none;
+                opacity: 0.25;
+            }
+            52% {
+                transform: none;
+                opacity: 0.25;
+            }
+            55% {
+                transform: translate(5px, 1px);
+                opacity: 0.5;
+            }
+            50% {
+                transform: none;
+                opacity: 0.25;
+            }
+            72% {
+                transform: none;
+                opacity: 0.25;
+            }
+            75% {
+                transform: translate(2px, 6px);
+                opacity: 0.5;
+            }
+            80% {
+                transform: none;
+                opacity: 0.25;
+            }
+            100% {
+                transform: none;
+                opacity: 0.25;
+            }
+        }
     </style>
+    <script>
+        window.onload = function()
+        {
+            function showTime(){
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+            
+            if(h == 0){
+                h = 12;
+            }
+            
+            if(h > 12){
+                h = h - 12;
+                session = "PM";
+            }
+            
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            
+            var time = h + ":" + m + ":" + s + " " + session;
+            //document.getElementById("MyClockDisplay").innerText = time;
+            //document.getElementById("MyClockDisplay").textContent = time;
+            
+            document.getElementById("MyClockDisplay").children[0].textContent = time;
+            document.getElementById("MyClockDisplay").children[1].textContent = time;
+            document.getElementById("MyClockDisplay").children[1].textContent = time;
+            setTimeout(showTime, 1000);
+            
+        }
+         showTime();
+        }
+    </script>
 </head>
 <body style="background-color: black;">
     <div id="container">
         <div style="position:  fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) ; color: white; font-size: 36px; text-align: center;">
-           <div  class="typewriter">Hi, I am Woo Shaun :)</div>
-           <br><span style="font-family: cursive; letter-spacing: .10em;">Coming Soon!</span>
-           <br><img src="https://s05.flagcounter.com/count2/2RFO/bg_000000/txt_FFFFFF/border_FFFFFF/columns_8/maxflags_250/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+           <div id="MyClockDisplay" class="clock" onload="showTime()">
+            <p></p>
+            <p></p>
+            <p></p>
+            </div>
+            <div  class="typewriter">Hi, I am Woo Shaun :)</div>
+           <br>
+           <div class="glitch" style="margin-top: 50px;">
+               <p>Coming Soon!</p>
+               <p>Coming Soon!</p>
+               <p>Coming Soon!</p>
+            </div>
+           <br><img style="margin-top: 50px;" src="https://s05.flagcounter.com/count2/2RFO/bg_000000/txt_FFFFFF/border_FFFFFF/columns_8/maxflags_250/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
         </div>
     </div>
 </body>
